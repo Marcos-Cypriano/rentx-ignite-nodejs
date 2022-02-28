@@ -14,7 +14,6 @@ const categoriesRoutes = Router();
 // SOLID - S - Single Resposability Principle - a rota só tem a responsabilidade de receber o request, chamar e oserviço e retornar.
 // Ela não faz a regra de negócio, validações etc.
 categoriesRoutes.post("/", (req, res) => {
-  console.log("Reload funcionando!");
   return createCategoryController.handle(req, res);
 });
 
