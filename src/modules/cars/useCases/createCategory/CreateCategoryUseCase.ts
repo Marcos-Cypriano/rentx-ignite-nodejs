@@ -1,3 +1,5 @@
+import { inject, injectable } from "tsyringe";
+
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 interface IRequest {
@@ -5,6 +7,7 @@ interface IRequest {
   description: string;
 }
 
+@injectable()
 class CreateCategoryUseCase {
   /**
    * SOLID - D - Dependency Inversion Principle - a classe não precisa saber quem é o repositório (constructor que fez isso)
@@ -12,7 +15,10 @@ class CreateCategoryUseCase {
    * contanto que ele seja um subtipo da categoria. Exemplo: em categories.routes.ts eu posso importar tanto CategoriesRepository quanto o
    * PostgresCategoriesRepository, pois ambas implementam a ICategoriesRepository. Isso não irá gerar problema aqui.
    */
-  constructor(private categoriesRepository: ICategoriesRepository) {}
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: ICategoriesRepository
+  ) {}
 
   async execute({ name, description }: IRequest): Promise<void> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(
