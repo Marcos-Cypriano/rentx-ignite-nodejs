@@ -52,6 +52,7 @@
     Deve ser possível realizar a devolução de um carro
 **RN**
     Se o carro for devolvido com menos de 24h, deverá ser cobradp diária completa;
+    Não deve ser possível fazer uma  devolução sem estar logado;
     Ao realizar a devolução, o carro deverá ser liberado para outro aluguel;
     Ao realizar a devolução o usuário deverá ser liberado para realizar outro aluguel;
     Ao realizar a devolução deverá ser calculado o total do aluguel;
